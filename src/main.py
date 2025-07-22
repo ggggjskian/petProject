@@ -19,3 +19,13 @@ app = FastAPI(lifespan=lifespan)
 @app.get("/")
 def read_info():
     return {"Hello": " World"}
+
+
+@app.post("/addContract")
+def add_contract():
+    pass
+
+
+@app.get("/getContract")
+def add_contract():
+    pass
