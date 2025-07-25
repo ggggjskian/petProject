@@ -10,7 +10,7 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy.dialects.postgresql import UUID, JSON
 
 
-engine = create_async_engine(settings.linkForConnection, echo=True)
+engine = create_async_engine(settings.linkForConnection)
 session = async_sessionmaker(engine, expire_on_commit=False)
 
 
@@ -26,8 +26,8 @@ class ContractsORM(Model):
     uuid_obj: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), unique=True)
     contract_object: Mapped[dict[str, Any]] = mapped_column(JSON)
     hash_contract: Mapped[str]
-    date_to: Mapped[datetime.datetime | None]
     date_from: Mapped[datetime.datetime | None]
+    date_to: Mapped[datetime.datetime | None]
 
 
 async def create_tables():
